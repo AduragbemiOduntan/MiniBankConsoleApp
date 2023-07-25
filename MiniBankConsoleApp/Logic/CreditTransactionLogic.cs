@@ -1,49 +1,37 @@
-﻿namespace MiniBankConsoleApp.Logic
+﻿using MiniBankConsoleApp.Entites;
+
+namespace MiniBankConsoleApp.Logic
 {
     public class CreditTransactionLogic
     {
-        string bank = "";
-        public void DepositFund()
+        BankAccount account = new BankAccount();
+        Transaction transaction = new Transaction();
+
+
+        public string DepositFund()
         {
             Console.WriteLine("Enter the amount you want to deposit");
             bool isAmount = double.TryParse(Console.ReadLine(), out double amount);
-            Console.WriteLine("Enter the account number you want to transfer to");
+            Console.WriteLine("Enter the account number");
             string acctNumber = Console.ReadLine();
-            Console.WriteLine("Choose Bank:\n1. Zenith\n2. Access,\n3. Polaris\n4. UBA\n5. Stanbic\n6. GTB");
-            bool bankTrue = byte.TryParse(Console.ReadLine(), out byte bankOption);
-            Console.WriteLine("Enter description");
-            string transDescription = Console.ReadLine();
-            Console.WriteLine("Enter pin");
-            string pin = Console.ReadLine();
+            if (!(acctNumber == account.AccountNumber))
+            {
+                return ("Invalid account number");
+            }
+            account.AccountBalance += amount;
 
-            if (!bankTrue)
-            {
-                Console.WriteLine("Input doesn't match options, try again");
-            }
-            switch (bankOption)
-            {
-                case 1:
-                    bank = "Zenith";
-                    break;
-                case 2:
-                    bank = "Access";
-                    break;
-                case 3:
-                    bank = "Polaris";
-                    break;
-                case 4:
-                    bank = "UBA";
-                    break;
-                case 5:
-                    bank = "Stambic";
-                    break;
-                case 6:
-                    bank = "GTB";
-                    break;
-            }
+            transaction.TransactionId = Guid.NewGuid().ToString();
+            transaction.TransactionStatus = "Successful";
+            transaction.TranscationType = "Deposit";
+            transaction.TransactionAmount = amount;
+            transaction.SourceAccount = account.AccountNumber;
+            transaction.DestinationBank = null;
+            transaction.DestinationAccount = null;
+            transaction.TransactionDescription = null;
+            transaction.Balance = account.AccountBalance;
+            Console.WriteLine("Transaction successful!");
+            return
+                ($"TransactionType: {transaction.TranscationType}, TransacttionAmount: {transaction.TransactionAmount}, SourceAccount: {transaction.SourceAccount}, DestinationBank: {transaction.DestinationBank}, DestinationAccount: {transaction.DestinationAccount}, TransactionDescription: {transaction.TransactionDescription} TransactionStatus: {transaction.TransactionStatus}, AccountBalance: {transaction.Balance}");
         }
-
-
-
     }
 }

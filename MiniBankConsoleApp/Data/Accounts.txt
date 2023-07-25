@@ -1,1 +1,1 @@
- Name: Aduragbemi Oduntan, Email: gbemi@gmail.com, PhoneNumber: 09087652431, AccountType: Savings, AccountBalance: 0
+ Name: Aduragbemi Oduntan, Email: aduragbemi@gmail.com, PhoneNumber: 0908635456, AccountType: Savings, AccountBalance: 0

@@ -5,13 +5,10 @@ namespace MiniBankConsoleApp.Logic
 {
     public class AccountCreationLogic
     {
-        /*  public Account _account; Customer _customer;*/
-        /*  public static*/
         BankAccount account = new BankAccount();
 
         public string CreateAccount()
         {
-            /*double acctBalance = 0;*/
             string acctType1 = "Savings";
             string acctType2 = "Current";
         AcctTypeOption: Console.WriteLine("Choose the account type you want to open\n1. Savings\n2. Current");
@@ -57,6 +54,7 @@ namespace MiniBankConsoleApp.Logic
                     int getAccount = randomNum.Next(lowerRange, upperRange);
                     string acctNum = getAccount.ToString();
 
+                    account.Id = Guid.NewGuid().ToString();
                     account.FirstName = firstName;
                     account.LastName = lastName;
                     account.Email = email;
@@ -94,14 +92,9 @@ namespace MiniBankConsoleApp.Logic
                     Console.WriteLine("Invalid option, try again.");
                     goto AcctTypeOption;
             }
-            return ($" Name: {account.FirstName} {account.LastName}, Email: {account.Email}, PhoneNumber: {account.PhoneNumber}, AccountType: {account.AccountType}, AccountBalance: {account.AccountBalance}");
+            return
+                ($" Name: {account.FirstName} {account.LastName}, Email: {account.Email}, PhoneNumber: {account.PhoneNumber}, AccountType: {account.AccountType}, AccountBalance: {account.AccountBalance}");
         }
-
-        /*        public void StoreData()
-                {
-                    //Context
-
-                }*/
 
         public void SignUp()
         {
