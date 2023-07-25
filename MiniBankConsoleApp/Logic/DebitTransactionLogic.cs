@@ -8,7 +8,6 @@ namespace MiniBankConsoleApp.Logic
         Transaction transaction = new Transaction();
 
         List<BankAccount> accounts = new List<BankAccount>();
-
         List<Transaction> transactions = new List<Transaction>();
     
 

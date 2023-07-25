@@ -1,11 +1,14 @@
 ﻿using MiniBankConsoleApp.Entites;
 using System.Net.Mail;
+using System.Transactions;
 
 namespace MiniBankConsoleApp.Logic
 {
     public class AccountCreationLogic
     {
         BankAccount account = new BankAccount();
+
+        List<BankAccount> accounts = new List<BankAccount>();
 
         public string CreateAccount()
         {
@@ -62,6 +65,12 @@ namespace MiniBankConsoleApp.Logic
                     account.AccountType = accountType;
                     account.Pin = pin;
 
+                    accounts.Add(account);
+
+                    foreach (var singleAccount in accounts)
+                    {
+                        Console.WriteLine(singleAccount);
+                    }
 
                 CorrectnessOption: Console.WriteLine("Please confirm your deatails");
                     Console.WriteLine

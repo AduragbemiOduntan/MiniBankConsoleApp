@@ -1,6 +1,7 @@
 ﻿using MiniBankConsoleApp.Logic;
 
 LogicBase logic = new LogicBase();
+logic.TransactionPrompt();
 /*int lowerRange = 1234567890;
 int upperRange = 2145678910;
 var randomNum = new Random();
@@ -27,4 +28,4 @@ using (StreamWriter sw = new StreamWriter(filePath))
 
 */
 
-logic.TransactionPrompt();
+

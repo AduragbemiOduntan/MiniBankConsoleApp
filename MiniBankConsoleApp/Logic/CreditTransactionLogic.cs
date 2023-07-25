@@ -7,6 +7,8 @@ namespace MiniBankConsoleApp.Logic
         BankAccount account = new BankAccount();
         Transaction transaction = new Transaction();
 
+        List<BankAccount> accounts = new List<BankAccount>();
+        List<Transaction> transactions = new List<Transaction>();
 
         public string DepositFund()
         {
@@ -29,6 +31,18 @@ namespace MiniBankConsoleApp.Logic
             transaction.DestinationAccount = null;
             transaction.TransactionDescription = null;
             transaction.Balance = account.AccountBalance;
+
+            transactions.Add(transaction);
+            accounts.Add(account);
+
+            foreach (var singleTrans in transactions)
+            {
+                Console.WriteLine(singleTrans);
+            }
+            foreach (var singleAccount in accounts)
+            {
+                Console.WriteLine(singleAccount);
+            }
             Console.WriteLine("Transaction successful!");
             return
                 ($"TransactionType: {transaction.TranscationType}, TransacttionAmount: {transaction.TransactionAmount}, SourceAccount: {transaction.SourceAccount}, DestinationBank: {transaction.DestinationBank}, DestinationAccount: {transaction.DestinationAccount}, TransactionDescription: {transaction.TransactionDescription} TransactionStatus: {transaction.TransactionStatus}, AccountBalance: {transaction.Balance}");
